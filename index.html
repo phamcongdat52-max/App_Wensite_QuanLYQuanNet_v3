@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberFlow - High Performance Gaming Center</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="stylesIndex.css">
+    
+    <script>
+        tailwind.config = { darkMode: "class" }
+    </script>
+</head>
+<body class="bg-[#0d1515] text-[#dce4e4] font-sans overflow-x-hidden">
+
+    <!-- HEADER (giữ nguyên) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-4xl text-cyan-400">bolt</span>
+                <span class="text-3xl font-black tracking-tighter text-white">CYBER<span class="text-cyan-400">FLOW</span></span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="text-cyan-400 font-bold">Trang chủ</a>
+                <a href="booking.jsp" class="hover:text-cyan-300">Đặt máy</a>
+                <a href="order.jsp" class="hover:text-cyan-300">Menu</a>
+                <a href="#topup" class="hover:text-cyan-300">Nạp tiền</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex items-center gap-2 bg-slate-900 px-5 py-2.5 rounded-2xl border border-cyan-400/30">
+                    <span class="text-cyan-400 font-bold">150.000đ</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="text-right hidden md:block">
+                        <p class="text-sm font-semibold">Đạt</p>
+                        <p class="text-xs text-emerald-400">VIP Member</p>
+                    </div>
+                    <div class="w-10 h-10 rounded-2xl overflow-hidden border-2 border-cyan-400">
+                        <img src="https://picsum.photos/id/64/200/200" alt="Avatar">
+                    </div>
+                </div>
+                <button onclick="toggleCart()" class="px-6 py-3 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold rounded-2xl transition-all flex items-center gap-2 relative">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO (giữ nguyên) -->
+        <!-- HERO SECTION -->
+    <header class="pt-24 min-h-screen flex items-center relative overflow-hidden">
+        <!-- Background Gaming Room -->
+        <div class="absolute inset-0 bg-cover bg-center" 
+             style="background-image: url('https://picsum.photos/id/1015/1920/1080')"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-[#0d1515]/90 via-[#0d1515]/75 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h1 class="text-6xl lg:text-7xl font-black leading-tight">
+                    BOOK YOUR<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-[#00f5ff] to-purple-400">BATTLE STATION</span>
+                </h1>
+                <p class="text-xl text-slate-300 max-w-lg">
+                    Gaming center hiện đại nhất Đà Nẵng với dàn máy cao cấp, không gian futuristic và dịch vụ nhanh chóng.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#book" class="px-8 py-5 bg-[#00f5ff] text-slate-950 font-bold rounded-2xl hover:scale-105 transition-all flex items-center gap-3 text-lg shadow-lg shadow-cyan-400/50">
+                        <span class="material-symbols-outlined">desktop_windows</span>
+                        ĐẶT MÁY NGAY
+                    </a>
+                    <a href="#menu" class="px-8 py-5 border-2 border-white/40 hover:border-white font-bold rounded-2xl transition-all text-lg flex items-center gap-3">
+                        <span class="material-symbols-outlined">restaurant</span>
+                        XEM MENU
+                    </a>
+                </div>
+            </div>
+
+            <!-- PC CASE SHOWCASE - ĐÃ CẬP NHẬT -->
+            <div class="hidden lg:flex justify-center relative">
+                <div class="glass-card p-6 rounded-3xl shadow-2xl relative">
+                    <img src="https://picsum.photos/id/1016/620/420" 
+                         alt="High-end RGB Gaming PC" 
+                         class="rounded-2xl shadow-inner border border-cyan-400/30">
+                    
+                    <!-- Neon Glow Effect -->
+                    <div class="absolute inset-0 rounded-2xl ring-1 ring-cyan-400/30 pointer-events-none"></div>
+                    
+                    <!-- Badge Sẵn Sàng -->
+                    <div class="absolute -bottom-5 right-8 glass-card px-6 py-3 rounded-2xl flex items-center gap-3 text-sm font-bold shadow-xl border border-emerald-400/30">
+                        <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                        <span class="text-emerald-400">42 MÁY SẴN SÀNG</span>
+                    </div>
+                    
+                    <!-- Small neon accent -->
+                    <div class="absolute -top-3 -right-3 bg-gradient-to-br from-cyan-400 to-purple-500 text-xs font-bold px-4 py-1.5 rounded-2xl rotate-12 shadow-lg">
+                        RTX 4090
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ==================== ĐẶT MÁY SECTION ==================== -->
+    <section id="book" class="py-20 px-6 bg-[#151d1d]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold">Đặt Máy Ngay</h2>
+                    <p class="text-slate-400">Hơn 50 battle station cao cấp</p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="filterPCs('all')" class="status-filter active">Tất cả</button>
+                    <button onclick="filterPCs('empty')" class="status-filter flex items-center gap-2"><div class="w-3 h-3 bg-emerald-400 rounded-full"></div> Trống</button>
+                    <button onclick="filterPCs('using')" class="status-filter flex items-center gap-2"><div class="w-3 h-3 bg-red-500 rounded-full"></div> Đang dùng</button>
+                    <button onclick="filterPCs('maintenance')" class="status-filter flex items-center gap-2"><div class="w-3 h-3 bg-yellow-400 rounded-full"></div> Bảo trì</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="pc-grid">
+                <!-- Card PC 1 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/201/400/250" alt="VIP-01" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-xl">VIP-01</h3>
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-full">TRỐNG</span>
+                        </div>
+                        <p class="text-cyan-400 text-sm mb-3">i9-14900K • RTX 4090 • 64GB • 2TB NVMe</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-black text-cyan-400">25k<span class="text-sm font-normal text-slate-400">/giờ</span></span>
+                            <button class="px-6 py-2.5 bg-cyan-400 text-slate-950 font-bold rounded-xl hover:bg-white transition">Đặt ngay</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card PC 2 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/237/400/250" alt="VIP-02" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-xl">VIP-02</h3>
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-full">TRỐNG</span>
+                        </div>
+                        <p class="text-cyan-400 text-sm mb-3">i7-14700K • RTX 4070 Ti • 32GB • 1TB</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-black text-cyan-400">18k<span class="text-sm font-normal text-slate-400">/giờ</span></span>
+                            <button class="px-6 py-2.5 bg-cyan-400 text-slate-950 font-bold rounded-xl hover:bg-white transition">Đặt ngay</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card PC 3 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/180/400/250" alt="STD-05" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-xl">STD-05</h3>
+                            <span class="px-3 py-1 bg-red-500/20 text-red-400 text-xs font-bold rounded-full">ĐANG DÙNG</span>
+                        </div>
+                        <p class="text-cyan-400 text-sm mb-3">i5-13600K • RTX 3060 • 16GB • 512GB</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-black text-cyan-400">12k<span class="text-sm font-normal text-slate-400">/giờ</span></span>
+                            <button class="px-6 py-2.5 bg-gray-600 text-gray-400 font-bold rounded-xl cursor-not-allowed" disabled>Đang dùng</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card PC 4 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/251/400/250" alt="PRO-03" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-xl">PRO-03</h3>
+                            <span class="px-3 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-full">TRỐNG</span>
+                        </div>
+                        <p class="text-cyan-400 text-sm mb-3">Ryzen 9 7950X • RTX 4080 • 64GB</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-black text-cyan-400">22k<span class="text-sm font-normal text-slate-400">/giờ</span></span>
+                            <button class="px-6 py-2.5 bg-cyan-400 text-slate-950 font-bold rounded-xl hover:bg-white transition">Đặt ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MENU SECTION ==================== -->
+    <section id="menu" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold">Menu Nạp Năng Lượng</h2>
+                <p class="text-slate-400">Đồ ăn - Đồ uống phục vụ 24/7</p>
+            </div>
+
+            <div class="flex justify-center gap-3 mb-12">
+                <button onclick="filterMenu('all')" class="menu-filter active">Tất cả</button>
+                <button onclick="filterMenu('food')" class="menu-filter">🍔 Đồ ăn</button>
+                <button onclick="filterMenu('drink')" class="menu-filter">🥤 Đồ uống</button>
+                <button onclick="filterMenu('snack')" class="menu-filter">🍿 Snack</button>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Menu Card 1 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/292/400/300" alt="Burger" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg leading-tight">Cyber Double Cheese Burger</h4>
+                        <p class="text-cyan-400 font-bold text-xl mt-3">65.000đ</p>
+                        <button onclick="addToCart(this)" class="mt-4 w-full py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-950 font-bold rounded-xl hover:scale-105 transition">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <!-- Menu Card 2 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/431/400/300" alt="Energy Drink" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg leading-tight">Neon Green Energy Drink</h4>
+                        <p class="text-cyan-400 font-bold text-xl mt-3">25.000đ</p>
+                        <button onclick="addToCart(this)" class="mt-4 w-full py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-950 font-bold rounded-xl hover:scale-105 transition">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <!-- Menu Card 3 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/670/400/300" alt="Ramen" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg leading-tight">Mì Cay Pro Player</h4>
+                        <p class="text-cyan-400 font-bold text-xl mt-3">45.000đ</p>
+                        <button onclick="addToCart(this)" class="mt-4 w-full py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-950 font-bold rounded-xl hover:scale-105 transition">Thêm vào giỏ</button>
+                    </div>
+                </div>
+
+                <!-- Menu Card 4 -->
+                <div class="glass-card overflow-hidden group">
+                    <img src="https://picsum.photos/id/312/400/300" alt="Coffee" class="w-full h-52 object-cover group-hover:scale-105 transition-transform">
+                    <div class="p-5">
+                        <h4 class="font-bold text-lg leading-tight">Cyber Cold Brew Coffee</h4>
+                        <p class="text-cyan-400 font-bold text-xl mt-3">35.000đ</p>
+                        <button onclick="addToCart(this)" class="mt-4 w-full py-3 bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-950 font-bold rounded-xl hover:scale-105 transition">Thêm vào giỏ</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- TOPUP SECTION - NẠP TIỀN NHANH -->
+<section id="topup" class="py-20 px-6 bg-[#0a0f0f]">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="inline-flex items-center gap-2 bg-cyan-400/10 text-cyan-400 px-6 py-2 rounded-full text-sm font-medium">
+                <span class="material-symbols-outlined">account_balance_wallet</span>
+                NẠP TIỀN
+            </span>
+            <h2 class="text-5xl font-black mt-4 mb-2">
+                Nạp Tiền <span class="text-cyan-400">Nhanh</span>
+            </h2>
+            <p class="text-slate-400 text-lg">Nạp vào tài khoản để sử dụng dịch vụ</p>
+        </div>
+
+        <!-- Main Topup Card -->
+        <div class="max-w-2xl mx-auto glass-card p-10 border border-cyan-400/30">
+            <div class="mb-8">
+                <p class="text-sm uppercase tracking-widest text-cyan-400 font-medium mb-3">Chọn mệnh giá</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="selectAmount(50000)" 
+                            class="amount-btn py-5 text-xl font-bold rounded-2xl border border-white/10 hover:border-cyan-400 transition-all">
+                        50k đ
+                    </button>
+                    <button onclick="selectAmount(100000)" 
+                            class="amount-btn py-5 text-xl font-bold rounded-2xl border border-white/10 hover:border-cyan-400 transition-all">
+                        100k đ
+                    </button>
+                    <button onclick="selectAmount(200000)" 
+                            class="amount-btn py-5 text-xl font-bold rounded-2xl border border-white/10 hover:border-cyan-400 transition-all">
+                        200k đ
+                    </button>
+                    <button onclick="selectAmount(500000)" 
+                            class="amount-btn py-5 text-xl font-bold rounded-2xl border border-white/10 hover:border-cyan-400 transition-all">
+                        500k đ
+                    </button>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <p class="text-sm uppercase tracking-widest text-cyan-400 font-medium mb-3">Hoặc nhập số tiền</p>
+                <div class="relative">
+                    <input id="custom-amount" 
+                           type="number" 
+                           placeholder="Nhập số tiền..." 
+                           oninput="formatCurrency(this)"
+                           class="w-full bg-slate-900 border border-white/10 focus:border-cyan-400 rounded-2xl px-6 py-6 text-3xl font-bold outline-none transition-all">
+                    <span class="absolute right-8 top-1/2 -translate-y-1/2 text-2xl font-bold text-slate-400">đ</span>
+                </div>
+            </div>
+
+            <button onclick="processTopup()" 
+                    class="w-full py-6 bg-gradient-to-r from-cyan-400 to-purple-500 text-slate-950 font-black text-2xl rounded-3xl hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-cyan-400/50">
+                NẠP TIỀN NGAY
+            </button>
+
+            <p class="text-center text-slate-500 text-sm mt-6">
+                Vui lòng đăng nhập để nạp tiền
+            </p>
+        </div>
+
+        <!-- Thông tin số dư hiện tại -->
+        <div class="max-w-2xl mx-auto mt-10 text-center">
+            <div class="inline-flex items-center gap-4 bg-slate-900 px-8 py-4 rounded-3xl border border-cyan-400/20">
+                <span class="text-sm text-slate-400">Số dư hiện tại:</span>
+                <span class="text-3xl font-black text-emerald-400">150.000đ</span>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+                
+                <!-- Column 1: Logo & About -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="material-symbols-outlined text-5xl text-cyan-400">bolt</span>
+                        <span class="text-4xl font-black tracking-tighter text-white">CYBER<span class="text-cyan-400">FLOW</span></span>
+                    </div>
+                    <p class="text-slate-400 max-w-md">
+                        High Performance Gaming Center tại Đà Nẵng. 
+                        Nơi hội tụ những battle station mạnh nhất và cộng đồng game thủ đam mê.
+                    </p>
+                    
+                </div>
+
+                <!-- Column 2: Dịch vụ -->
+                <div>
+                    <h3 class="font-bold text-lg mb-5 text-white">Dịch vụ</h3>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="booking.jsp" class="hover:text-cyan-400 transition">Đặt máy chơi</a></li>
+                        <li><a href="order.jsp" class="hover:text-cyan-400 transition">Order đồ ăn &amp; uống</a></li>
+                        <li><a href="#topup" class="hover:text-cyan-400 transition">Nạp tiền nhanh</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Phòng nhóm &amp; Event</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Thông tin -->
+                <div>
+                    <h3 class="font-bold text-lg mb-5 text-white">Thông tin</h3>
+                    <ul class="space-y-3 text-slate-400">
+                        <li><a href="#" class="hover:text-cyan-400 transition">Về CyberFlow</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Chính sách thành viên</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Quy định sử dụng</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Liên hệ -->
+                <div>
+                    <h3 class="font-bold text-lg mb-5 text-white">Liên hệ</h3>
+                    <ul class="space-y-3 text-slate-400">
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-cyan-400">call</span>
+                            <span>1900 88 68 79</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-cyan-400">mail</span>
+                            <span>contact@cyberflow.vn</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-cyan-400">location_on</span>
+                            <span>123 Nguyễn Tri Phương, Đà Nẵng</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+                <p>© 2026 CyberFlow Gaming Center. All Rights Reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-slate-300 transition">Điều khoản dịch vụ</a>
+                    <a href="#" class="hover:text-slate-300 transition">Chính sách bảo mật</a>
+                </div>
+                <p class="text-cyan-400/70">Made with 🔥 for Da Nang Gamers</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
